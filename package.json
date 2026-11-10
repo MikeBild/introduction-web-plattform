@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "type": "module",
-  "description": "Moderne Web-Plattform ohne Framework und ohne Build: HTML, CSS, Formulare, Fetch, ES Modules, Web Components, Offline, Performance",
+  "description": "The modern web platform without a framework and without a build: HTML, CSS, forms, Fetch, ES Modules, Web Components, offline, performance",
   "license": "MIT",
   "homepage": "https://workshops.mikebild.dev/w/web-plattform/remote/",
   "engines": {
