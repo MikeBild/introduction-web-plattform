@@ -1,4 +1,4 @@
-/* Werkstatt-Shop: Tokens als Custom Properties, Reihenfolge über Cascade Layers */
+/* Workshop shop: tokens as Custom Properties, order through Cascade Layers */
 @layer reset, base, components, utilities;
 
 @layer reset {

@@ -1,8 +1,8 @@
-// Kleiner Server für den Werkstatt-Shop: statische Dateien plus eine Mini-API.
-// Läuft ohne Build und ohne Pakete direkt mit Node.js 26: node server.ts
-//   PORT=3000   Port (Standard 3000)
-//   CSP=1       strikte Content Security Policy aus Übung 17 als Report-Only: Verstöße in der Konsole, nichts bricht
-//   CSP=enforce dieselbe Policy durchgesetzt: Verstöße blockieren
+// Small server for the workshop shop: static files plus a mini API.
+// Runs directly with Node.js 26, without a build and without packages: node server.ts
+//   PORT=3000   port (default 3000)
+//   CSP=1       strict Content Security Policy from exercise 17 as Report-Only: violations in the console, nothing breaks
+//   CSP=enforce the same policy, enforced: violations are blocked
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http'
 import { readFile } from 'node:fs/promises'
 import { extname, join, normalize, sep } from 'node:path'
@@ -42,7 +42,7 @@ const readBody = async (req: IncomingMessage) => {
   return body
 }
 
-// Nimmt JSON, ein normales Formular (urlencoded) und FormData per fetch (multipart) an.
+// Accepts JSON, a regular form (urlencoded), and FormData through fetch (multipart).
 const parseOrder = async (raw: string, contentType: string) => {
   const data: Record<string, unknown> = contentType.includes('application/json')
     ? JSON.parse(raw || '{}')

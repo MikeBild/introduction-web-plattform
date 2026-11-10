@@ -5,7 +5,7 @@ import './solution/elements.js'
 /** @param {string} selector */
 const $ = (selector) => /** @type {HTMLElement} */ (document.querySelector(selector))
 
-describe('Custom Elements für Preis und Warenkorb-Button', () => {
+describe('Custom Elements for price and cart button', () => {
   beforeEach(() => {
     document.body.innerHTML = `
       <article>
@@ -15,23 +15,23 @@ describe('Custom Elements für Preis und Warenkorb-Button', () => {
       </article>`
   })
 
-  it('zeigt den Preis als Euro-Betrag', () => {
+  it('shows the price as a euro amount', () => {
     expect($('shop-price').textContent).toBe('18,90 €')
   })
 
-  it('aktualisiert den Preis, wenn sich das Attribut cents ändert', () => {
+  it('updates the price when the cents attribute changes', () => {
     $('shop-price').setAttribute('cents', '1290')
     expect($('shop-price').textContent).toBe('12,90 €')
   })
 
-  it('rendert einen echten button', () => {
+  it('renders a real button', () => {
     const button = $('add-to-cart button')
     expect(button).not.toBeNull()
     expect(button.getAttribute('type')).toBe('button')
     expect(button.textContent).toBe('In den Warenkorb')
   })
 
-  it('meldet cart:add mit productId, das bis zum document hochsteigt', () => {
+  it('dispatches cart:add with productId, which bubbles up to the document', () => {
     const listener = vi.fn()
     document.addEventListener('cart:add', listener)
     $('add-to-cart button').click()
@@ -42,7 +42,7 @@ describe('Custom Elements für Preis und Warenkorb-Button', () => {
     expect(event.composed).toBe(true)
   })
 
-  it('meldet nach dem Entfernen und Wiedereinfügen nur einmal pro Klick', () => {
+  it('reports only once per click after removal and reinsertion', () => {
     const element = $('add-to-cart')
     const parent = /** @type {HTMLElement} */ (element.parentElement)
     element.remove()

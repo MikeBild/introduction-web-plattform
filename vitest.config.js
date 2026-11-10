@@ -2,8 +2,8 @@
 import { defineConfig } from 'vitest/config'
 import { playwright } from '@vitest/browser-playwright'
 
-// Die Tests importieren aus ./solution/. Mit TARGET=start biegt dieses Plugin
-// jeden solchen Import auf ./start/ um – so prüft derselbe Test deine Lösung.
+// The tests import from ./solution/. With TARGET=start, this plugin redirects
+// every such import to ./start/ – that way the same test checks your solution.
 const target = process.env.TARGET === 'start' ? 'start' : 'solution'
 
 /** @returns {import('vite').Plugin} */

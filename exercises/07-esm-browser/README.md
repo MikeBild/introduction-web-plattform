@@ -1,16 +1,18 @@
-# 07 · ES Modules im Browser ohne Build
+*English · [Deutsch](README.de.md)*
 
-`start/index.html` lädt zwei klassische Skripte in fester Reihenfolge, und der Warenkorb hängt global an `window`. Seit Jahren können alle Browser ES Modules, und mit einer Import Map gibt es auch Bare Specifiers wie `shop/cart.js` – ganz ohne Bundler.
+# 07 · ES Modules in the browser without a build
 
-## Aufgabe
+`start/index.html` loads two classic scripts in a fixed order, and the cart hangs globally on `window`. All browsers have supported ES Modules for years, and with an Import Map you also get bare specifiers like `shop/cart.js` – without any bundler.
 
-1. Mach `addItem`, `removeItem` und `totalCents` in `start/lib/cart.js` zu Pure Functions: Sie liefern einen neuen Warenkorb und ändern den alten nicht. `addItem` erhöht die Menge, wenn das Produkt schon drin ist.
-2. Lade `main.js` in `start/index.html` mit `<script type="module">`.
-3. Leg eine Import Map an, die `shop/` auf `./lib/` abbildet, und importier in `main.js` aus `'shop/cart.js'`.
-4. Ergänz `<link rel="modulepreload" href="./lib/cart.js">`, damit der Browser das Modul früh lädt.
-5. Öffne die Seite über `npm start` unter `http://localhost:3000/exercises/07-esm-browser/start/` und schau dir im Network-Tab an, welche Dateien wann laden.
+## Task
 
-## Prüfen
+1. Make `addItem`, `removeItem`, and `totalCents` in `start/lib/cart.js` Pure Functions: they return a new cart and leave the old one unchanged. `addItem` increases the quantity if the product is already in the cart.
+2. Load `main.js` in `start/index.html` with `<script type="module">`.
+3. Create an Import Map that maps `shop/` to `./lib/`, and import from `'shop/cart.js'` in `main.js`.
+4. Add `<link rel="modulepreload" href="./lib/cart.js">` so the browser loads the module early.
+5. Open the page through `npm start` at `http://localhost:3000/exercises/07-esm-browser/start/` and look at the Network tab to see which files load when.
+
+## Check
 
 ```bash
 npm run test:start -- exercises/07-esm-browser

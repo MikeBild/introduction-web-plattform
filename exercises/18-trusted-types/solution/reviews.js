@@ -7,8 +7,8 @@
  */
 
 /**
- * Zeigt eine Bewertung an. Fremder Text landet nur über textContent im DOM,
- * nie über innerHTML – so wird aus „<img onerror=…>“ einfach Text.
+ * Shows a review. Untrusted text only reaches the DOM through textContent,
+ * never through innerHTML – that way “<img onerror=…>” just becomes text.
  * @param {HTMLElement} element
  * @param {Review} review
  */
@@ -30,9 +30,9 @@ const escapeHtml = (value) =>
  */
 
 /**
- * Legt die einzige Stelle an, an der aus einem String HTML werden darf.
- * Unter require-trusted-types-for 'script' akzeptieren innerHTML & Co. nur noch TrustedHTML.
- * @param {TrustedTypePolicyFactory | undefined} factory window.trustedTypes, wenn vorhanden
+ * Creates the only place where a string may become HTML.
+ * Under require-trusted-types-for 'script', innerHTML and friends only accept TrustedHTML.
+ * @param {TrustedTypePolicyFactory | undefined} factory window.trustedTypes, if available
  * @returns {HtmlPolicy}
  */
 export const createShopPolicy = (factory) => {

@@ -1,18 +1,20 @@
-# 14 · Core Web Vitals messen
+*English · [Deutsch](README.de.md)*
 
-Die Startseite in `start/index.html` lädt ausgerechnet das große Hero-Bild lazy, und keines der Bilder hat feste Maße. Das verschlechtert zwei der drei Core Web Vitals: Largest Contentful Paint (LCP) und Cumulative Layout Shift (CLS). Der dritte, Interaction to Next Paint (INP), misst, wie schnell die Seite auf Eingaben reagiert.
+# 14 · Measure Core Web Vitals
 
-## Aufgabe
+The start page in `start/index.html` loads the large hero image lazily, of all things, and none of the images has fixed dimensions. That worsens two of the three Core Web Vitals: Largest Contentful Paint (LCP) and Cumulative Layout Shift (CLS). The third, Interaction to Next Paint (INP), measures how quickly the page responds to input.
 
-1. Lass `rate(name, value)` nach den offiziellen Grenzwerten bewerten: LCP bis 2.500 ms gut, bis 4.000 ms verbesserungswürdig; INP 200 und 500 ms; CLS 0,1 und 0,25.
-2. Lass `observeLcp(report)` einen `PerformanceObserver` für `largest-contentful-paint` mit `buffered: true` anlegen und jeweils den letzten Eintrag melden. Gib eine Funktion zurück, die die Beobachtung beendet.
-3. Lade das Hero-Bild in `start/index.html` sofort mit `fetchpriority="high"` und gib allen Bildern `width` und `height`.
-4. Lade die Produktbilder mit `loading="lazy"`.
-5. Miss die Seite unter `npm start` im Performance-Panel der DevTools, vorher und nachher.
+## Task
 
-Die LCP-API ist seit Dezember 2025 Baseline, Event Timing für INP ebenfalls. Die Layout Instability API für CLS gibt es nur in Chromium. Für Messungen bei echten Nutzern nimmt man deshalb meist die Bibliothek `web-vitals`.
+1. Make `rate(name, value)` rate by the official thresholds: LCP good up to 2,500 ms, needs improvement up to 4,000 ms; INP 200 and 500 ms; CLS 0.1 and 0.25.
+2. Make `observeLcp(report)` create a `PerformanceObserver` for `largest-contentful-paint` with `buffered: true` and report the latest entry each time. Return a function that ends the observation.
+3. Load the hero image in `start/index.html` right away with `fetchpriority="high"` and give all images `width` and `height`.
+4. Load the product images with `loading="lazy"`.
+5. Measure the page at `npm start` in the DevTools Performance panel, before and after.
 
-## Prüfen
+The LCP API has been Baseline since December 2025, and so has Event Timing for INP. The Layout Instability API for CLS exists only in Chromium. For measurements with real users, you therefore usually use the `web-vitals` library.
+
+## Check
 
 ```bash
 npm run test:start -- exercises/14-performance

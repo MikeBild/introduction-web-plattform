@@ -1,10 +1,10 @@
 // @ts-check
 
 /**
- * Produktkarte, bisher ohne Shadow DOM: Sie überschreibt ihren Inhalt mit innerHTML,
- * und jedes globale CSS greift in sie hinein.
- * TODO: template, attachShadow({ mode: 'open' }), Slots name und price plus Default-Slot,
- * part="buy" am Button, Event cart:add mit composed: true.
+ * Product card, so far without Shadow DOM: it overwrites its content with innerHTML,
+ * and every global CSS rule reaches into it.
+ * TODO: template, attachShadow({ mode: 'open' }), slots name and price plus a default slot,
+ * part="buy" on the button, event cart:add with composed: true.
  */
 export class ProductCard extends HTMLElement {
   connectedCallback() {

@@ -2,10 +2,10 @@
 /** @import { CartItem } from '../../07-esm-browser/solution/lib/cart.js' */
 
 /**
- * Speichert den Warenkorb.
- * TODO: als { version: 1, items } speichern; kaputtes JSON, fremde Versionen und
- * fehlende Daten ergeben []; save liefert false statt zu werfen, wenn der Speicher voll ist.
- * @param {Storage} storage z. B. localStorage
+ * Saves the cart.
+ * TODO: save as { version: 1, items }; broken JSON, other versions, and
+ * missing data result in []; save returns false instead of throwing when the storage is full.
+ * @param {Storage} storage e.g. localStorage
  * @param {string} key
  */
 export const createCartStorage = (storage, key) => ({
@@ -24,7 +24,7 @@ export const createCartStorage = (storage, key) => ({
 })
 
 /**
- * TODO: Cache first – Treffer aus dem Cache liefern, sonst laden und erfolgreiche Antworten cachen.
+ * TODO: Cache first – return hits from the cache, otherwise load and cache successful responses.
  * @param {Request} request
  * @param {Cache} cache
  * @param {typeof fetch} [fetchFn]
@@ -36,7 +36,7 @@ export const cacheFirst = async (request, cache, fetchFn = fetch) => {
 }
 
 /**
- * TODO: Network first – laden und cachen; wenn das Netz fehlt, aus dem Cache liefern.
+ * TODO: Network first – load and cache; if the network is unavailable, return from the cache.
  * @param {Request} request
  * @param {Cache} cache
  * @param {typeof fetch} [fetchFn]

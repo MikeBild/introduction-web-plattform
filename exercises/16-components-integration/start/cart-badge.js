@@ -9,9 +9,9 @@
  */
 
 /**
- * Warenkorb-Anzeige. Bisher liest sie die Positionen als JSON aus einem Attribut.
- * TODO: Property items (Getter/Setter) statt Attribut, Attribut label beobachten,
- * Button „Warenkorb leeren“ meldet cart-change mit detail.items = [], addCleanup für disconnectedCallback.
+ * Cart display. So far it reads the line items as JSON from an attribute.
+ * TODO: property items (getter/setter) instead of an attribute, observe the attribute label,
+ * button “Warenkorb leeren” (empty cart) dispatches cart-change with detail.items = [], addCleanup for disconnectedCallback.
  */
 export class CartBadge extends HTMLElement {
   /** @type {CartItem[]} */
@@ -40,8 +40,8 @@ export class CartBadge extends HTMLElement {
 if (!customElements.get('cart-badge')) customElements.define('cart-badge', CartBadge)
 
 /**
- * TODO: items aus dem Store setzen, Änderungen abonnieren, cart-change an den Store
- * weitergeben, beim Entfernen des Elements alles wieder lösen.
+ * TODO: set items from the store, subscribe to changes, pass cart-change on to the store,
+ * release everything when the element is removed.
  * @param {CartBadge} element
  * @param {CartStore} store
  * @returns {() => void}

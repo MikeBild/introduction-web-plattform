@@ -1,16 +1,18 @@
-# 01 · Semantisches HTML
+*English · [Deutsch](README.de.md)*
 
-Die Produktliste in `start/products.html` besteht nur aus `div` und `span` mit `onclick`. Für Screenreader, Tastatur und Suchmaschinen ist das eine Wand ohne Struktur. Richtige Elemente bringen Rolle, Fokus und Tastaturbedienung gratis mit.
+# 01 · Semantic HTML
 
-## Aufgabe
+The product list in `start/products.html` consists only of `div` and `span` with `onclick`. For screen readers, keyboards, and search engines, that is a wall without structure. The right elements bring role, focus, and keyboard operation for free.
 
-1. Ersetze die Kopf-, Haupt- und Fußbereiche durch `header`, `nav`, `main` und `footer`.
-2. Mach „Werkzeug“ zur einzigen `h1` und jeden Produktnamen zur `h2`.
-3. Stell die Produkte als Liste dar: `ul > li > article`.
-4. Mach aus Navigations-`span`s echte Links (`a href`) und aus „In den Warenkorb“ einen `button type="button"`. Kein `onclick` mehr im Markup.
-5. Gib jedem `img` einen beschreibenden `alt`-Text.
+## Task
 
-## Prüfen
+1. Replace the header, main, and footer areas with `header`, `nav`, `main`, and `footer`.
+2. Make “Werkzeug” (tools) the only `h1` and each product name an `h2`.
+3. Present the products as a list: `ul > li > article`.
+4. Turn navigation `span`s into real links (`a href`) and “In den Warenkorb” (add to cart) into a `button type="button"`. No more `onclick` in the markup.
+5. Give every `img` a descriptive `alt` text.
+
+## Check
 
 ```bash
 npm run test:start -- exercises/01-semantic-html

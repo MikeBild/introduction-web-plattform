@@ -12,27 +12,27 @@ const directives = (policy) =>
       .map(([name, ...values]) => [name, values]),
   )
 
-describe('Content Security Policy mit Nonce', () => {
-  it('erzeugt für jede Antwort eine neue, zufällige Nonce', () => {
+describe('Content Security Policy with a nonce', () => {
+  it('creates a new random nonce for every response', () => {
     const first = createNonce()
     expect(first).toMatch(/^[A-Za-z0-9+/]{22}==$/)
     expect(createNonce()).not.toBe(first)
   })
 
-  it('erlaubt nur Skripte mit der Nonce und vererbt das Vertrauen per strict-dynamic', () => {
+  it('allows only scripts with the nonce and passes trust on through strict-dynamic', () => {
     const policy = directives(buildCsp({ nonce: 'r4nd0m' }))
     expect(policy.get('script-src')).toEqual(["'nonce-r4nd0m'", "'strict-dynamic'"])
     expect(buildCsp({ nonce: 'r4nd0m' })).not.toMatch(/unsafe-inline|unsafe-eval/)
   })
 
-  it('schließt Plugins, fremde base-URLs und Framing aus', () => {
+  it('rules out plugins, foreign base URLs, and framing', () => {
     const policy = directives(buildCsp({ nonce: 'x' }))
     expect(policy.get('object-src')).toEqual(["'none'"])
     expect(policy.get('base-uri')).toEqual(["'none'"])
     expect(policy.get('frame-ancestors')).toEqual(["'none'"])
   })
 
-  it('verlangt Trusted Types für DOM-Sinks', () => {
+  it('requires Trusted Types for DOM sinks', () => {
     expect(directives(buildCsp({ nonce: 'x' })).get('require-trusted-types-for')).toEqual(["'script'"])
   })
 })

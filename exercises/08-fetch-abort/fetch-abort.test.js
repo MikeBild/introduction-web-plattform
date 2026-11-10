@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest'
 import { HttpError, createSearch, loadProducts } from './solution/products-api.js'
 
 /**
- * fetch-Ersatz: antwortet nach `delayMs` mit `body`, bricht beim Abort mit dem Grund des Signals ab.
+ * fetch stand-in: responds with `body` after `delayMs`, rejects on abort with the reason of the signal.
  * @param {unknown} body
  * @param {{ status?: number, delayMs?: number }} [options]
  */
@@ -20,27 +20,27 @@ const fakeFetch = (body, { status = 200, delayMs = 0 } = {}) =>
       }),
   )
 
-describe('fetch mit Abbruch, Timeout und Fehlerbehandlung', () => {
-  it('lädt Produkte als JSON', async () => {
+describe('fetch with abort, timeout, and error handling', () => {
+  it('loads products as JSON', async () => {
     const fetchFn = fakeFetch([{ id: 'p-hammer' }])
     await expect(loadProducts({ fetchFn })).resolves.toEqual([{ id: 'p-hammer' }])
     expect(fetchFn.mock.calls[0]?.[1]?.signal).toBeInstanceOf(AbortSignal)
   })
 
-  it('wirft HttpError mit Status, wenn der Server einen Fehler meldet', async () => {
+  it('throws HttpError with the status when the server reports an error', async () => {
     const fetchFn = fakeFetch({ error: 'kaputt' }, { status: 503 })
     const error = await loadProducts({ fetchFn }).catch((e) => e)
     expect(error).toBeInstanceOf(HttpError)
     expect(error.status).toBe(503)
   })
 
-  it('bricht nach dem Timeout ab', async () => {
+  it('aborts after the timeout', async () => {
     const fetchFn = fakeFetch([], { delayMs: 500 })
     const error = await loadProducts({ fetchFn, timeoutMs: 20 }).catch((e) => e)
     expect(error.name).toBe('TimeoutError')
   })
 
-  it('bricht ab, wenn der Aufrufer abbricht', async () => {
+  it('aborts when the caller aborts', async () => {
     const fetchFn = fakeFetch([], { delayMs: 500 })
     const controller = new AbortController()
     const pending = loadProducts({ fetchFn, signal: controller.signal, timeoutMs: 5000 })
@@ -49,7 +49,7 @@ describe('fetch mit Abbruch, Timeout und Fehlerbehandlung', () => {
     expect(error.name).toBe('AbortError')
   })
 
-  it('bricht eine laufende Suche ab, sobald eine neue startet', async () => {
+  it('aborts a running search as soon as a new one starts', async () => {
     const fetchFn = fakeFetch([{ id: 'p-zange' }], { delayMs: 30 })
     const search = createSearch(fetchFn)
     const first = search('za').catch((e) => e)

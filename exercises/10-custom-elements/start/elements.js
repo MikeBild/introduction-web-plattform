@@ -2,8 +2,8 @@
 import { formatCents } from '../../shop.js'
 
 /**
- * Zeigt einen Preis in Cent als Euro-Betrag: <shop-price cents="1290"></shop-price>
- * TODO: auf Änderungen von cents reagieren (observedAttributes, attributeChangedCallback).
+ * Shows a price in cents as a euro amount: <shop-price cents="1290"></shop-price>
+ * TODO: react to changes of cents (observedAttributes, attributeChangedCallback).
  */
 export class ShopPrice extends HTMLElement {
   connectedCallback() {
@@ -12,9 +12,9 @@ export class ShopPrice extends HTMLElement {
 }
 
 /**
- * Button, der ein Produkt in den Warenkorb legt: <add-to-cart product-id="p-hammer"></add-to-cart>
- * TODO: echten button rendern, Event „cart:add“ mit detail.productId, bubbles und composed,
- * Listener in disconnectedCallback entfernen.
+ * Button that adds a product to the cart: <add-to-cart product-id="p-hammer"></add-to-cart>
+ * TODO: render a real button, event “cart:add” with detail.productId, bubbles and composed,
+ * remove the listener in disconnectedCallback.
  */
 export class AddToCart extends HTMLElement {
   connectedCallback() {

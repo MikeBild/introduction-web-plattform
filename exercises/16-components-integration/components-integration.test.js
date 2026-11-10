@@ -4,7 +4,7 @@ import { connectStore } from './solution/cart-badge.js'
 /** @import { CartBadge, CartStore } from './solution/cart-badge.js' */
 /** @import { CartItem } from '../07-esm-browser/solution/lib/cart.js' */
 
-/** Minimaler Store, wie ihn ein React-Context, ein Knockout-ViewModel oder Vanilla JS anbieten könnte. */
+/** Minimal store, as a React Context, a Knockout ViewModel, or vanilla JS might provide it. */
 const createStore = (/** @type {CartItem[]} */ initial) => {
   let items = initial
   /** @type {Set<(items: CartItem[]) => void>} */
@@ -28,19 +28,19 @@ const createStore = (/** @type {CartItem[]} */ initial) => {
 const badge = () => /** @type {CartBadge} */ (document.querySelector('cart-badge'))
 const text = () => badge().shadowRoot?.querySelector('[part="count"]')?.textContent
 
-describe('Web Component in fremde Frameworks einbetten', () => {
+describe('Embedding a Web Component in other frameworks', () => {
   beforeEach(() => {
     document.body.innerHTML = '<cart-badge label="Im Korb"></cart-badge>'
   })
 
-  it('nimmt Daten als Property entgegen und zeigt das Label', () => {
+  it('accepts data as a property and shows the label', () => {
     badge().items = [{ productId: 'p-hammer', quantity: 2, priceCents: 1290 }]
     expect(text()).toBe('Im Korb: 2')
     badge().setAttribute('label', 'Warenkorb')
     expect(text()).toBe('Warenkorb: 2')
   })
 
-  it('folgt dem Store und meldet Änderungen an ihn zurück', () => {
+  it('follows the store and reports changes back to it', () => {
     const store = createStore([{ productId: 'p-zange', quantity: 1, priceCents: 1890 }])
     connectStore(badge(), store)
     expect(text()).toBe('Im Korb: 1')
@@ -53,7 +53,7 @@ describe('Web Component in fremde Frameworks einbetten', () => {
     expect(text()).toBe('Im Korb: 0')
   })
 
-  it('löst die Verbindung, sobald das Element das DOM verlässt', () => {
+  it('releases the connection as soon as the element leaves the DOM', () => {
     const store = createStore([])
     connectStore(badge(), store)
     expect(store.listenerCount()).toBe(1)

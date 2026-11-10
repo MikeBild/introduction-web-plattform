@@ -1,8 +1,8 @@
 // @ts-check
 
 /**
- * Öffnet den Warenkorb als modalen Dialog.
- * TODO: showModal statt open-Attribut, Focus nach dem Schließen zurück zum Auslöser.
+ * Opens the cart as a modal dialog.
+ * TODO: showModal instead of the open attribute, focus back to the trigger after closing.
  * @param {HTMLDialogElement} dialog
  * @param {HTMLElement} trigger
  */
@@ -12,8 +12,8 @@ export const openCart = (dialog, trigger) => {
 }
 
 /**
- * Sagt eine Statusmeldung an, ohne den Focus zu verschieben.
- * TODO: Live Region mit aria-live="polite" nutzen.
+ * Announces a status message without moving focus.
+ * TODO: use a Live Region with aria-live="polite".
  * @param {HTMLElement} region
  * @param {string} text
  */

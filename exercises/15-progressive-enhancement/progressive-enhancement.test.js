@@ -6,16 +6,16 @@ import { enhanceForm } from './solution/enhance.js'
 const form = () => /** @type {HTMLFormElement} */ (document.querySelector('form#checkout'))
 const status = () => form().querySelector('output')?.textContent
 
-describe('Checkout mit Progressive Enhancement', () => {
+describe('Checkout with Progressive Enhancement', () => {
   beforeEach(() => {
     document.body.innerHTML = markup
     const email = /** @type {HTMLInputElement | null} */ (document.querySelector('#email'))
     if (email) email.value = 'ada@example.org'
-    // Schutz für den Test: ein echter Submit würde die Testseite verlassen
+    // Guard for the test: a real submit would leave the test page
     form()?.addEventListener('submit', (event) => event.preventDefault())
   })
 
-  it('funktioniert ohne JavaScript als normales POST-Formular', () => {
+  it('works without JavaScript as a regular POST form', () => {
     expect(form()).not.toBeNull()
     expect(form().getAttribute('method')).toBe('post')
     expect(form().getAttribute('action')).toBe('/api/orders')
@@ -23,7 +23,7 @@ describe('Checkout mit Progressive Enhancement', () => {
     expect(form().querySelector('output')).not.toBeNull()
   })
 
-  it('schickt die Bestellung mit JavaScript per fetch und zeigt das Ergebnis', async () => {
+  it('sends the order with JavaScript through fetch and shows the result', async () => {
     const fetchFn = vi.fn(async () => Response.json({ id: 'o-42' }, { status: 201 }))
     enhanceForm(form(), fetchFn)
     form().requestSubmit()
@@ -35,14 +35,14 @@ describe('Checkout mit Progressive Enhancement', () => {
     expect(/** @type {FormData} */ (init.body).get('email')).toBe('ada@example.org')
   })
 
-  it('nennt bei Fehlerantworten den nächsten Schritt', async () => {
+  it('names the next step on error responses', async () => {
     const fetchFn = vi.fn(async () => Response.json({ error: 'invalid' }, { status: 422 }))
     enhanceForm(form(), fetchFn)
     form().requestSubmit()
     await vi.waitFor(() => expect(status()).toMatch(/versuch es noch einmal/))
   })
 
-  it('fällt bei Netzfehlern auf den normalen Submit zurück', async () => {
+  it('falls back to the regular submit on network errors', async () => {
     const submit = vi.spyOn(form(), 'submit').mockImplementation(() => {})
     const fetchFn = vi.fn(async () => {
       throw new TypeError('Failed to fetch')

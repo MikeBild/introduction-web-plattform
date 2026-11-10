@@ -8,7 +8,7 @@ let sheet
 /** @param {string} selector */
 const style = (selector) => getComputedStyle(/** @type {Element} */ (document.querySelector(selector)))
 
-describe('Container Queries und :has()', () => {
+describe('Container Queries and :has()', () => {
   beforeEach(() => {
     sheet = document.createElement('style')
     sheet.textContent = `html { font-size: 16px } ${css}`
@@ -27,17 +27,17 @@ describe('Container Queries und :has()', () => {
     document.body.style.width = ''
   })
 
-  it('richtet die Karte nach der Breite ihres Containers aus, nicht nach dem Viewport', () => {
+  it('lays out the card by the width of its container, not the viewport', () => {
     expect(style('#narrow').flexDirection).toBe('column')
     expect(style('#wide').flexDirection).toBe('row')
   })
 
-  it('dimmt ausverkaufte Karten über :has() ohne zusätzliche Klasse', () => {
+  it('dims sold-out cards through :has() without an extra class', () => {
     expect(style('#sold').opacity).toBe('0.6')
     expect(style('#wide').opacity).toBe('1')
   })
 
-  it('zeigt die Fehlerübersicht über :has(:user-invalid)', () => {
+  it('shows the error summary through :has(:user-invalid)', () => {
     const selectors = [...sheet.sheet?.cssRules ?? []]
       .filter((rule) => rule instanceof CSSStyleRule)
       .map((rule) => rule.selectorText)

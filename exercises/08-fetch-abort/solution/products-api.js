@@ -1,7 +1,7 @@
 // @ts-check
 /** @import { Product } from '../../shop.js' */
 
-/** Fehler für Antworten mit Status außerhalb von 200 bis 299. */
+/** Error for responses with a status outside 200 to 299. */
 export class HttpError extends Error {
   /**
    * @param {number} status
@@ -15,7 +15,7 @@ export class HttpError extends Error {
 }
 
 /**
- * Lädt die Produkte. Bricht ab, wenn der Aufrufer abbricht oder die Zeit abläuft.
+ * Loads the products. Aborts when the caller aborts or the time runs out.
  * @param {{ signal?: AbortSignal, timeoutMs?: number, fetchFn?: typeof fetch }} [options]
  * @returns {Promise<Product[]>}
  */
@@ -29,8 +29,8 @@ export const loadProducts = async ({ signal, timeoutMs = 5000, fetchFn = fetch }
 }
 
 /**
- * Liefert eine Suchfunktion, die jede vorige, noch laufende Suche abbricht.
- * So überholt eine alte Antwort nie eine neue.
+ * Returns a search function that aborts every previous search that is still running.
+ * That way an old response never overtakes a new one.
  * @param {typeof fetch} [fetchFn]
  * @returns {(term: string) => Promise<Product[]>}
  */

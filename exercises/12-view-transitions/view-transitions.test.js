@@ -8,14 +8,14 @@ const stubReducedMotion = (reduce) =>
     (query) => /** @type {MediaQueryList} */ ({ matches: reduce && query.includes('reduce'), media: query }),
   )
 
-describe('View Transitions mit Fallback', () => {
+describe('View Transitions with fallback', () => {
   afterEach(() => {
     vi.restoreAllMocks()
-    // @ts-expect-error eigene Property aus dem Fallback-Test wieder entfernen
+    // @ts-expect-error remove the custom property from the fallback test again
     delete document.startViewTransition
   })
 
-  it('nutzt startViewTransition und wartet, bis das DOM aktualisiert ist', async () => {
+  it('uses startViewTransition and waits until the DOM is updated', async () => {
     stubReducedMotion(false)
     const start = vi.spyOn(document, 'startViewTransition')
     document.body.innerHTML = '<p id="sort">Preis aufsteigend</p>'
@@ -27,7 +27,7 @@ describe('View Transitions mit Fallback', () => {
     expect(document.querySelector('#sort')?.textContent).toBe('Preis absteigend')
   })
 
-  it('ändert das DOM sofort, wenn der Browser keine View Transitions kennt', async () => {
+  it('changes the DOM immediately when the browser does not support View Transitions', async () => {
     stubReducedMotion(false)
     Object.defineProperty(document, 'startViewTransition', { value: undefined, configurable: true })
     const update = vi.fn()
@@ -35,7 +35,7 @@ describe('View Transitions mit Fallback', () => {
     expect(update).toHaveBeenCalledOnce()
   })
 
-  it('verzichtet auf Animation bei prefers-reduced-motion', async () => {
+  it('skips the animation with prefers-reduced-motion', async () => {
     stubReducedMotion(true)
     const start = vi.spyOn(document, 'startViewTransition')
     const update = vi.fn()
@@ -44,7 +44,7 @@ describe('View Transitions mit Fallback', () => {
     expect(start).not.toHaveBeenCalled()
   })
 
-  it('gibt jeder Karte einen eindeutigen view-transition-name', () => {
+  it('gives each card a unique view-transition-name', () => {
     document.body.innerHTML = `
       <article class="card" data-product-id="p-hammer"></article>
       <article class="card" data-product-id="p-zange"></article>`

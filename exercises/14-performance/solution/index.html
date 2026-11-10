@@ -8,11 +8,11 @@
 <body>
   <main>
     <h1>Werkzeug für die Werkstatt</h1>
-    <!-- LCP-Element: sofort und mit hoher Priorität laden, Platz reservieren -->
+    <!-- LCP element: load right away and with high priority, reserve its space -->
     <img class="hero" src="/img/werkstatt.webp" alt="Werkbank mit Werkzeug"
       width="1200" height="600" fetchpriority="high">
     <ul class="products">
-      <!-- unterhalb des sichtbaren Bereichs: erst laden, wenn sie in die Nähe kommen -->
+      <!-- below the fold: load them only when they come close -->
       <li><img src="/img/hammer.webp" alt="Schlosserhammer" width="320" height="240" loading="lazy"></li>
       <li><img src="/img/zange.webp" alt="Kombizange" width="320" height="240" loading="lazy"></li>
       <li><img src="/img/akku.webp" alt="Akku-Schrauber" width="320" height="240" loading="lazy"></li>

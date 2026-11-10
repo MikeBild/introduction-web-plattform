@@ -1,5 +1,5 @@
 // @ts-check
-// Im Browser löst die Import Map „shop/“ auf ./lib/ auf. Kein Bundler nötig.
+// In the browser, the Import Map resolves “shop/” to ./lib/. No bundler needed.
 import { addItem, totalCents } from 'shop/cart.js'
 import { formatCents, products } from '../../shop.js'
 

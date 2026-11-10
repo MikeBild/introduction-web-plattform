@@ -5,7 +5,7 @@ import { observeLcp, rate } from './solution/vitals.js'
 
 const page = new DOMParser().parseFromString(html, 'text/html')
 
-describe('Core Web Vitals bewerten', () => {
+describe('Rating Core Web Vitals', () => {
   it.each([
     ['LCP', 2500, 'good'],
     ['LCP', 2501, 'needs-improvement'],
@@ -16,15 +16,15 @@ describe('Core Web Vitals bewerten', () => {
     ['CLS', 0.05, 'good'],
     ['CLS', 0.2, 'needs-improvement'],
     ['CLS', 0.3, 'poor'],
-  ])('%s %d ist %s', (name, value, expected) => {
+  ])('%s %d is %s', (name, value, expected) => {
     expect(rate(/** @type {'LCP' | 'INP' | 'CLS'} */ (name), value)).toBe(expected)
   })
 })
 
-describe('LCP beobachten', () => {
+describe('Observing LCP', () => {
   afterEach(() => vi.unstubAllGlobals())
 
-  it('beobachtet largest-contentful-paint gepuffert und meldet den letzten Kandidaten', () => {
+  it('observes largest-contentful-paint with buffering and reports the latest candidate', () => {
     /** @type {PerformanceObserverCallback | undefined} */
     let callback
     const observe = vi.fn()
@@ -51,8 +51,8 @@ describe('LCP beobachten', () => {
   })
 })
 
-describe('Bilder für gute Werte auszeichnen', () => {
-  it('lädt das Hero-Bild sofort mit hoher Priorität und reserviert seinen Platz', () => {
+describe('Marking up images for good scores', () => {
+  it('loads the hero image right away with high priority and reserves its space', () => {
     const hero = /** @type {HTMLImageElement} */ (page.querySelector('img.hero'))
     expect(hero.getAttribute('fetchpriority')).toBe('high')
     expect(hero.getAttribute('loading')).not.toBe('lazy')
@@ -60,7 +60,7 @@ describe('Bilder für gute Werte auszeichnen', () => {
     expect(hero.getAttribute('height')).toBeTruthy()
   })
 
-  it('lädt Produktbilder lazy und mit festen Maßen gegen Layout Shifts', () => {
+  it('loads product images lazily and with fixed dimensions against layout shifts', () => {
     const images = [...page.querySelectorAll('.products img')]
     expect(images.length).toBeGreaterThan(0)
     for (const image of images) {

@@ -1,117 +1,119 @@
-# Übungen: Moderne Web-Plattform
+*English · [Deutsch](README.de.md)*
 
-Übungs-Repo zum Workshop „Moderne Web-Plattform ohne Framework“. Jede Übung hat einen Startpunkt, Tests und eine Lösung. Alle Übungen bauen am selben Beispiel, dem Werkstatt-Shop.
+# Exercises: Modern web platform
 
-## Was du lernst
+Exercise repo for the workshop “Modern web platform without a framework”. Each exercise has a starting point, tests, and a reference solution. All exercises build on the same example, the workshop shop.
 
-- Semantisches HTML, Accessibility und modernes CSS ohne Framework schreiben
-- Formulare, `fetch`, Streams und ES Modules direkt im Browser nutzen
-- Web Components, Offline, Core Web Vitals und Sicherheit mit CSP umsetzen
+## What you learn
 
-## Voraussetzungen
+- Write semantic HTML, accessibility, and modern CSS without a framework
+- Use forms, `fetch`, Streams, and ES Modules directly in the browser
+- Implement Web Components, offline support, Core Web Vitals, and security with CSP
 
-- **Node.js 26** – `nvm use` liest die Version aus [`.nvmrc`](.nvmrc).
-- Git und ein Editor mit JavaScript- und TypeScript-Support, z. B. VS Code
-- ein aktueller Browser mit DevTools
+## Prerequisites
 
-## Einrichten
+- **Node.js 26** – `nvm use` reads the version from [`.nvmrc`](.nvmrc).
+- Git and an editor with JavaScript and TypeScript support, e.g. VS Code
+- a current browser with DevTools
+
+## Setup
 
 ```bash
 git clone https://github.com/MikeBild/introduction-web-plattform.git
 cd introduction-web-plattform
 npm install
-npx playwright install chromium   # einmalig: Chromium für die Tests
-npm run typecheck                  # Typprüfung mit TypeScript strict
-npm test                           # alle Tests gegen die Lösungen in solution/
-npm start                          # Shop unter http://localhost:3000
+npx playwright install chromium   # once: Chromium for the tests
+npm run typecheck                  # type check with TypeScript strict
+npm test                           # all tests against the reference solutions in solution/
+npm start                          # shop at http://localhost:3000
 ```
 
-## So arbeitest du mit einer Übung
+## How to work on an exercise
 
-Jede Übung hat einen Ordner `start/` (dein Startpunkt) und `solution/` (die Lösung). Der Test liegt daneben, importiert aus `solution/` und prüft mit `TARGET=start` stattdessen deinen Ordner `start/`.
+Each exercise has a folder `start/` (your starting point) and `solution/` (the reference solution). The test sits next to them, imports from `solution/`, and with `TARGET=start` checks your folder `start/` instead.
 
 ```bash
-npm run test:start                 # alle Tests gegen deine Lösungen in start/
-npm run test:start -- exercises/06-forms   # nur eine Übung
+npm run test:start                 # all tests against your solutions in start/
+npm run test:start -- exercises/06-forms   # only one exercise
 ```
 
-## Übungen
+## Exercises
 
-| Nr. | Übung | Thema |
+| No. | Exercise | Topic |
 | --- | --- | --- |
-| 01 | [semantic-html](exercises/01-semantic-html) | Produktliste mit Landmarks, Überschriften, Listen, Links und Buttons |
-| 02 | [accessibility](exercises/02-accessibility) | Warenkorb als `<dialog>`, Fokus zurück zum Auslöser, Live Region |
-| 03 | [css-cascade](exercises/03-css-cascade) | Custom Properties, Cascade Layers und Nesting |
-| 04 | [css-layout](exercises/04-css-layout) | Produktraster mit Grid, Warenkorbzeile mit Flexbox |
-| 05 | [container-has](exercises/05-container-has) | Container Queries, `:has()` und `:user-invalid` |
-| 06 | [forms](exercises/06-forms) | Checkout mit nativer Validierung und `FormData` |
-| 07 | [esm-browser](exercises/07-esm-browser) | ES Modules, Import Map und `modulepreload` |
-| 08 | [fetch-abort](exercises/08-fetch-abort) | `fetch` mit Timeout, Abbruch und Fehlerstatus |
-| 09 | [streams](exercises/09-streams) | NDJSON aus einem Stream lesen |
-| 10 | [custom-elements](exercises/10-custom-elements) | `<shop-price>` und `<add-to-cart>` als Custom Elements |
-| 11 | [shadow-dom](exercises/11-shadow-dom) | `<product-card>` mit Template, Shadow DOM, Slots und `::part` |
-| 12 | [view-transitions](exercises/12-view-transitions) | Sortierung als View Transition mit Fallback |
-| 13 | [storage-offline](exercises/13-storage-offline) | Warenkorb im `localStorage`, Cache-Strategien im Service Worker |
-| 14 | [performance](exercises/14-performance) | Core Web Vitals bewerten, LCP beobachten, Bilder auszeichnen |
+| 01 | [semantic-html](exercises/01-semantic-html) | Product list with landmarks, headings, lists, links, and buttons |
+| 02 | [accessibility](exercises/02-accessibility) | Cart as a `<dialog>`, focus back to the trigger, Live Region |
+| 03 | [css-cascade](exercises/03-css-cascade) | Custom Properties, Cascade Layers, and Nesting |
+| 04 | [css-layout](exercises/04-css-layout) | Product grid with Grid, cart row with Flexbox |
+| 05 | [container-has](exercises/05-container-has) | Container Queries, `:has()`, and `:user-invalid` |
+| 06 | [forms](exercises/06-forms) | Checkout with native validation and `FormData` |
+| 07 | [esm-browser](exercises/07-esm-browser) | ES Modules, Import Map, and `modulepreload` |
+| 08 | [fetch-abort](exercises/08-fetch-abort) | `fetch` with timeout, abort, and error status |
+| 09 | [streams](exercises/09-streams) | Read NDJSON from a stream |
+| 10 | [custom-elements](exercises/10-custom-elements) | `<shop-price>` and `<add-to-cart>` as Custom Elements |
+| 11 | [shadow-dom](exercises/11-shadow-dom) | `<product-card>` with template, Shadow DOM, slots, and `::part` |
+| 12 | [view-transitions](exercises/12-view-transitions) | Sorting as a View Transition with fallback |
+| 13 | [storage-offline](exercises/13-storage-offline) | Cart in `localStorage`, cache strategies in the Service Worker |
+| 14 | [performance](exercises/14-performance) | Rate Core Web Vitals, observe LCP, mark up images |
 
-### Zusatzkapitel
+### Extra chapters
 
-| Nr. | Übung | Thema |
+| No. | Exercise | Topic |
 | --- | --- | --- |
-| 15 | [progressive-enhancement](exercises/15-progressive-enhancement) | Checkout, der ohne JavaScript funktioniert und mit besser wird |
-| 16 | [components-integration](exercises/16-components-integration) | `<cart-badge>` mit Store-Anbindung für React und Knockout |
-| 17 | [csp](exercises/17-csp) | Sicherheit: strikte Content Security Policy mit Nonce |
-| 18 | [trusted-types](exercises/18-trusted-types) | Sicherheit: Bewertungen ohne DOM-XSS, Policy für Trusted Types |
+| 15 | [progressive-enhancement](exercises/15-progressive-enhancement) | Checkout that works without JavaScript and gets better with it |
+| 16 | [components-integration](exercises/16-components-integration) | `<cart-badge>` with a store connection for React and Knockout |
+| 17 | [csp](exercises/17-csp) | Security: strict Content Security Policy with a nonce |
+| 18 | [trusted-types](exercises/18-trusted-types) | Security: reviews without DOM XSS, a policy for Trusted Types |
 
-01 bis 14 bilden den Kern des Workshops. 17 und 18 gehören zum Block Sicherheit.
+01 to 14 form the core of the workshop. 17 and 18 belong to the security block.
 
-## Der Werkstatt-Shop
+## The workshop shop
 
-Ein kleiner Shop für Werkstattbedarf: Produktliste, Warenkorb, Checkout. Gemeinsame Daten stehen in [`exercises/shop.js`](exercises/shop.js): der Typ `Product` (`id`, `name`, `priceCents`, `stock`), vier Beispielprodukte und `formatCents`. Geld steht überall in ganzen Cent, erst die Anzeige macht daraus Euro.
+A small shop for workshop supplies: product list, cart, checkout. Shared data lives in [`exercises/shop.js`](exercises/shop.js): the type `Product` (`id`, `name`, `priceCents`, `stock`), four sample products, and `formatCents`. Money is always stored in whole cents; only the display turns it into euros.
 
-Unter [`app/`](app) setzen die Lösungen den Shop zusammen. Starte ihn mit `npm start` und probier Tastaturbedienung, Sortierung, Warenkorb und Bestellung aus, auch mit abgeschaltetem JavaScript.
+In [`app/`](app), the reference solutions come together as the shop. Start it with `npm start` and try keyboard navigation, sorting, the cart, and ordering, also with JavaScript turned off.
 
-## Ohne Build, trotzdem geprüft
+## No build, still checked
 
-- **Browser-Code** ist JavaScript mit JSDoc-Typen und `// @ts-check`. `npm run typecheck` prüft ihn mit TypeScript im Modus `strict`, ohne dass etwas übersetzt wird.
-- **Server** (`server.ts`) ist TypeScript, das Node.js 26 direkt ausführt. Er liefert `app/` und `exercises/` aus und bietet eine kleine API: `GET /api/products`, `GET /api/products/stream` (NDJSON), `POST /api/orders` (JSON, Formular oder FormData). Mit `CSP=1` schickt er die Policy aus Übung 17 als Report-Only, mit `CSP=enforce` setzt er sie durch.
-- **Tests** laufen mit Vitest im Browser-Modus in einem echten Chromium. So prüfen sie echtes CSS, Shadow DOM, View Transitions und die Cache API.
+- **Browser code** is JavaScript with JSDoc types and `// @ts-check`. `npm run typecheck` checks it with TypeScript in `strict` mode, without compiling anything.
+- **Server** (`server.ts`) is TypeScript that Node.js 26 runs directly. It serves `app/` and `exercises/` and offers a small API: `GET /api/products`, `GET /api/products/stream` (NDJSON), `POST /api/orders` (JSON, form, or FormData). With `CSP=1`, it sends the policy from exercise 17 as Report-Only; with `CSP=enforce`, it enforces it.
+- **Tests** run with Vitest in browser mode in a real Chromium. That way they check real CSS, Shadow DOM, View Transitions, and the Cache API.
 
-Bewusst wenig Abhängigkeiten, alle nur für die Entwicklung:
+Deliberately few dependencies, all for development only:
 
-| Paket | Wofür |
+| Package | Purpose |
 | --- | --- |
-| `vitest` | Test Runner |
-| `@vitest/browser-playwright` | lässt die Tests im echten Browser laufen statt in einer DOM-Nachbildung |
-| `playwright` | stellt Chromium für den Browser-Modus bereit |
-| `typescript` | prüft JSDoc-Typen und `server.ts` |
-| `@types/node` | Typen für `server.ts` |
+| `vitest` | Test runner |
+| `@vitest/browser-playwright` | runs the tests in a real browser instead of a DOM emulation |
+| `playwright` | provides Chromium for browser mode |
+| `typescript` | checks JSDoc types and `server.ts` |
+| `@types/node` | types for `server.ts` |
 
-Vite steckt nur in Vitest. Für die App selbst gibt es kein Build-Tool.
+Vite is only used inside Vitest. The app itself has no build tool.
 
-## Browser-Unterstützung, Stand Oktober 2026
+## Browser support as of October 2026
 
-Alle Features im Kern sind Baseline, laufen also in den aktuellen Versionen von Chrome, Edge, Firefox und Safari. Geprüft mit den Baseline-Daten von MDN (`web-features` 3.44).
+All features in the core are Baseline, so they run in the current versions of Chrome, Edge, Firefox, and Safari. Checked against MDN’s Baseline data (`web-features` 3.44).
 
-- **Seit Jahren Baseline:** Custom Properties, Grid, Flexbox, Cascade Layers, `<dialog>`, Constraint Validation, `fetch`, Streams, ES Modules, Import Maps, Custom Elements, Shadow DOM, Service Worker
-- **Seit 2026 durchgehend verfügbar:** `:has()`, CSS Nesting, `:user-invalid`, Declarative Shadow DOM, `AbortSignal.any` und `AbortSignal.timeout`
-- **Neu Baseline:** Same-Document View Transitions (Oktober 2025), LCP- und Event-Timing-API (Dezember 2025), Trusted Types (Februar 2026), asynchrone Iteration über Streams (September 2026)
-- **Noch nicht Baseline:** Cross-Document View Transitions (kein Firefox), Layout Instability API für CLS (nur Chromium), Sanitizer API
+- **Baseline for years:** Custom Properties, Grid, Flexbox, Cascade Layers, `<dialog>`, Constraint Validation, `fetch`, Streams, ES Modules, Import Maps, Custom Elements, Shadow DOM, Service Worker
+- **Available in all browsers since 2026:** `:has()`, CSS Nesting, `:user-invalid`, Declarative Shadow DOM, `AbortSignal.any` and `AbortSignal.timeout`
+- **Newly Baseline:** same-document View Transitions (October 2025), LCP and Event Timing API (December 2025), Trusted Types (February 2026), async iteration over streams (September 2026)
+- **Not Baseline yet:** cross-document View Transitions (no Firefox), Layout Instability API for CLS (Chromium only), Sanitizer API
 
-## Workshop und Folien
+## Workshop and slides
 
-- Workshop: [„Moderne Web-Plattform ohne Framework“](https://workshops.mikebild.dev/w/web-plattform/remote/)
-- Folien: [slides.mikebild.dev/introduction-web-plattform](https://slides.mikebild.dev/introduction-web-plattform.html)
+- Workshop: [“Modern web platform without a framework”](https://workshops.mikebild.dev/w/web-plattform/remote/)
+- Slides: [slides.mikebild.dev/introduction-web-plattform](https://slides.mikebild.dev/introduction-web-plattform.html)
 - PDF: [slides.mikebild.dev/introduction-web-plattform.pdf](https://slides.mikebild.dev/introduction-web-plattform.pdf)
 
-## Archiv
+## Archive
 
-Das Material von 2010 bis 2016 aus der Zeit, als das Repo „Introduction to HTML5, CSS3 & ECMA“ hieß, liegt im Ordner [`legacy/`](legacy) (HTML5-APIs, CSS3, ECMAScript 2015) und mit lokalen Beispielen und Folien im Branch [`archiv-lokal`](https://github.com/MikeBild/introduction-web-plattform/tree/archiv-lokal) – als Vergleich alt gegen neu: Application Cache, XHR2 und `float`-Layouts von damals, Service Worker, `fetch` und Grid heute.
+The material from 2010 to 2016, from the time the repo was called “Introduction to HTML5, CSS3 & ECMA”, is in the folder [`archive/`](archive) (HTML5 APIs, CSS3, ECMAScript 2015) and, with local examples and slides, in the branch [`archiv-lokal`](https://github.com/MikeBild/introduction-web-plattform/tree/archiv-lokal) – as a comparison of then and now: Application Cache, XHR2 and `float` layouts then, Service Worker, `fetch` and Grid today.
 
-## Fehler melden
+## Report a bug
 
-Hast du einen Fehler gefunden oder eine Idee? Leg ein [Issue](https://github.com/MikeBild/introduction-web-plattform/issues) an. Sicherheitslücken meldest du bitte nicht öffentlich, sondern über das Kontaktformular auf [mikebild.dev](https://www.mikebild.dev).
+Did you find a bug or have an idea? Open an [issue](https://github.com/MikeBild/introduction-web-plattform/issues). Please don’t report security vulnerabilities publicly; use the contact form on [mikebild.dev](https://www.mikebild.dev) instead.
 
-## Lizenz
+## License
 
 [MIT](LICENSE)

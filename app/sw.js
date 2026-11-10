@@ -1,6 +1,6 @@
 // @ts-check
 /// <reference lib="webworker" />
-// Service Worker der Übungs-App, mit den Strategien aus Übung 13.
+// Service Worker of the exercise app, with the strategies from exercise 13.
 import { cacheFirst, networkFirst } from '../exercises/13-storage-offline/solution/offline.js'
 
 const sw = /** @type {ServiceWorkerGlobalScope} */ (/** @type {unknown} */ (self))

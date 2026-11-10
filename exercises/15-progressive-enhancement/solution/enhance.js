@@ -1,11 +1,11 @@
 // @ts-check
 
 /**
- * Verbessert ein funktionierendes Formular: Mit JavaScript geht die Bestellung per fetch raus
- * und die Seite bleibt stehen. Fällt das Netz aus, übernimmt der normale Submit des Browsers.
+ * Enhances a working form: with JavaScript, the order goes out through fetch
+ * and the page stays put. If the network fails, the regular submit of the browser takes over.
  * @param {HTMLFormElement} form
  * @param {typeof fetch} [fetchFn]
- * @returns {() => void} entfernt die Verbesserung wieder
+ * @returns {() => void} removes the enhancement again
  */
 export const enhanceForm = (form, fetchFn = fetch) => {
   const status = form.querySelector('output')
@@ -29,7 +29,7 @@ export const enhanceForm = (form, fetchFn = fetch) => {
       if (status) status.textContent = `Danke, deine Bestellung ${order.id} ist eingegangen.`
       form.reset()
     } catch {
-      // Netzfehler: auf den Weg ohne JavaScript zurückfallen
+      // Network error: fall back to the path without JavaScript
       form.submit()
     } finally {
       button?.removeAttribute('disabled')

@@ -1,7 +1,7 @@
 // @ts-check
 
 /**
- * Erzeugt eine Nonce: 16 Zufallsbytes als Base64, für jede Antwort neu.
+ * Creates a nonce: 16 random bytes as Base64, new for every response.
  * @returns {string}
  */
 export const createNonce = () => {
@@ -10,10 +10,10 @@ export const createNonce = () => {
 }
 
 /**
- * Baut eine strikte Content Security Policy auf Basis einer Nonce.
- * Nur Skripte mit dieser Nonce laufen; was sie nachladen, erbt das Vertrauen (strict-dynamic).
+ * Builds a strict Content Security Policy based on a nonce.
+ * Only scripts with this nonce run; whatever they load inherits the trust (strict-dynamic).
  * @param {{ nonce: string }} options
- * @returns {string} Wert für den Header Content-Security-Policy
+ * @returns {string} value for the Content-Security-Policy header
  */
 export const buildCsp = ({ nonce }) =>
   [

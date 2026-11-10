@@ -1,6 +1,6 @@
 // @ts-check
 /// <reference lib="webworker" />
-// Service Worker des Werkstatt-Shops. Registrieren mit:
+// Service Worker of the workshop shop. Register it with:
 // navigator.serviceWorker.register('./sw.js', { type: 'module' })
 import { cacheFirst, networkFirst } from './offline.js'
 
@@ -13,7 +13,7 @@ sw.addEventListener('install', (event) => {
 })
 
 sw.addEventListener('activate', (event) => {
-  // Alte Cache-Versionen aufräumen
+  // Clean up old cache versions
   event.waitUntil(
     caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key)))),
   )

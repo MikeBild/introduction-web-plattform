@@ -13,7 +13,7 @@ const columnsAt = (width) => {
   return tops.filter((top) => top === tops[0]).length
 }
 
-describe('Produktraster mit Grid, Warenkorbzeile mit Flexbox', () => {
+describe('Product grid with Grid, cart row with Flexbox', () => {
   beforeEach(() => {
     sheet = document.createElement('style')
     sheet.textContent = `html { font-size: 16px } ${css}`
@@ -27,19 +27,19 @@ describe('Produktraster mit Grid, Warenkorbzeile mit Flexbox', () => {
 
   afterEach(() => sheet.remove())
 
-  it('nutzt Grid mit Abstand für das Raster', () => {
+  it('uses Grid with a gap for the grid', () => {
     const list = /** @type {Element} */ (document.querySelector('.products'))
     expect(getComputedStyle(list).display).toBe('grid')
     expect(getComputedStyle(list).columnGap).toBe('16px')
   })
 
-  it('passt die Zahl der Spalten an die verfügbare Breite an', () => {
+  it('adapts the number of columns to the available width', () => {
     expect(columnsAt(960)).toBe(4)
     expect(columnsAt(500)).toBe(2)
     expect(columnsAt(230)).toBe(1)
   })
 
-  it('setzt die Summe in der Warenkorbzeile an den rechten Rand', () => {
+  it('puts the total in the cart row at the right edge', () => {
     const line = /** @type {Element} */ (document.querySelector('.cart-line'))
     const total = /** @type {Element} */ (document.querySelector('.total'))
     const qty = /** @type {Element} */ (document.querySelector('.qty'))

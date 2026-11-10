@@ -9,7 +9,7 @@
  */
 
 /**
- * Legt ein Produkt in den Warenkorb. Liefert einen neuen Warenkorb, der alte bleibt unverändert.
+ * Adds a product to the cart. Returns a new cart; the old one stays unchanged.
  * @param {readonly CartItem[]} items
  * @param {Product} product
  * @param {number} [quantity]

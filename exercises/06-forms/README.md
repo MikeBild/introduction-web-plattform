@@ -1,16 +1,18 @@
-# 06 · Formulare und native Validierung
+*English · [Deutsch](README.de.md)*
 
-Das Checkout-Formular in `start/checkout.html` hat keine Labels, keine Typen und einen „Button“ aus `span`, der eine eigene Prüffunktion aufruft. Der Browser kann das alles selbst: Pflichtfelder, E-Mail-Format, Muster und eigene Meldungen über die Constraint Validation API.
+# 06 · Forms and native validation
 
-## Aufgabe
+The checkout form in `start/checkout.html` has no labels, no types, and a “button” made of a `span` that calls its own validation function. The browser can do all of this itself: required fields, email format, patterns, and custom messages through the Constraint Validation API.
 
-1. Gib jedem Feld ein `label` mit `for` und eine passende `id`.
-2. Setz `required`, `type="email"`, für die PLZ `pattern="\d{5}"` und für die Menge `type="number" min="1"`.
-3. Ersetze den `span` durch `<button type="submit">`.
-4. Lass `checkQuantity(input, stock)` per `setCustomValidity` melden, wenn die Menge den Bestand übersteigt, und die Meldung mit `''` wieder löschen.
-5. Lass `readCheckout(form)` die Werte per `FormData` lesen, getrimmt, die Menge als Zahl.
+## Task
 
-## Prüfen
+1. Give every field a `label` with `for` and a matching `id`.
+2. Set `required`, `type="email"`, `pattern="\d{5}"` for the postal code, and `type="number" min="1"` for the quantity.
+3. Replace the `span` with `<button type="submit">`.
+4. Make `checkQuantity(input, stock)` report through `setCustomValidity` when the quantity exceeds the stock, and clear the message again with `''`.
+5. Make `readCheckout(form)` read the values through `FormData`, trimmed, with the quantity as a number.
+
+## Check
 
 ```bash
 npm run test:start -- exercises/06-forms

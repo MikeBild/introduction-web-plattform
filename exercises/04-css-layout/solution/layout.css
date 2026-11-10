@@ -1,4 +1,4 @@
-/* Grid für das Raster: so viele Spalten, wie mit mindestens 14rem hineinpassen */
+/* Grid for the grid: as many columns as fit at a minimum of 14rem each */
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
@@ -8,7 +8,7 @@
   padding: 0;
 }
 
-/* Flexbox für die Zeile: Name wächst, Menge und Summe behalten ihre Breite */
+/* Flexbox for the row: the name grows, quantity and total keep their width */
 .cart-line {
   display: flex;
   align-items: baseline;

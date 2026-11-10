@@ -9,8 +9,8 @@
  */
 
 /**
- * Meldet dem Browser, wenn die Menge den Bestand übersteigt.
- * Der Browser zeigt die Meldung an und blockiert den Submit.
+ * Tells the browser when the quantity exceeds the stock.
+ * The browser shows the message and blocks the submit.
  * @param {HTMLInputElement} input
  * @param {number} stock
  */
@@ -20,7 +20,7 @@ export const checkQuantity = (input, stock) => {
 }
 
 /**
- * Liest das Checkout-Formular aus.
+ * Reads the checkout form.
  * @param {HTMLFormElement} form
  * @returns {Checkout}
  */

@@ -1,15 +1,17 @@
-# 04 · Grid und Flexbox
+*English · [Deutsch](README.de.md)*
 
-`start/layout.css` baut das Produktraster noch mit `float` und festen Prozentbreiten: Auf schmalen Bildschirmen werden die Karten winzig, auf breiten bleiben es vier. Die Warenkorbzeile hängt an `float: right`.
+# 04 · Grid and Flexbox
 
-## Aufgabe
+`start/layout.css` still builds the product grid with `float` and fixed percentage widths: on narrow screens the cards get tiny, on wide ones they stay at four. The cart row hangs on `float: right`.
 
-1. Mach `.products` zum Grid mit `grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr))` und `gap: 1rem`. Ganz ohne Media Query.
-2. Mach `.cart-line` zur Flexbox: Der Name wächst (`flex: 1`), die Summe steht am rechten Rand.
-3. Entferne alle `float`s.
-4. Probier im Browser aus: Wie viele Spalten bekommst du bei 960, 500 und 230 Pixel Breite?
+## Task
 
-## Prüfen
+1. Make `.products` a grid with `grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr))` and `gap: 1rem`. No media query at all.
+2. Make `.cart-line` a flexbox: the name grows (`flex: 1`), the total sits at the right edge.
+3. Remove all `float`s.
+4. Try it in the browser: how many columns do you get at a width of 960, 500, and 230 pixels?
+
+## Check
 
 ```bash
 npm run test:start -- exercises/04-css-layout

@@ -1,15 +1,17 @@
+*English · [Deutsch](README.de.md)*
+
 # 12 · View Transitions
 
-Wenn du die Produktliste nach Preis sortierst oder filterst, springen die Karten ohne Übergang an ihren neuen Platz. Mit der View Transition API animiert der Browser vom alten zum neuen Zustand: Du änderst nur das DOM, er übernimmt den Rest. Same-Document View Transitions sind seit Oktober 2025 Baseline.
+When you sort the product list by price or filter it, the cards jump to their new place without a transition. With the View Transition API, the browser animates from the old to the new state: you only change the DOM, and it takes care of the rest. Same-document View Transitions have been Baseline since October 2025.
 
-## Aufgabe
+## Task
 
-1. Lass `transition(update)` die Änderung über `document.startViewTransition(update)` ausführen und auf `updateCallbackDone` warten.
-2. Führ `update` direkt aus, wenn der Browser die API nicht kennt oder `prefers-reduced-motion: reduce` gesetzt ist.
-3. Lass `nameCards(cards)` jeder Karte den `view-transition-name` `card-<data-product-id>` geben. Jeder Name darf nur einmal auf der Seite vorkommen.
-4. Probier unter `npm start` die Sortierung im Shop aus und verlangsame die Animation in den DevTools (Animations-Panel).
+1. Make `transition(update)` run the change through `document.startViewTransition(update)` and wait for `updateCallbackDone`.
+2. Run `update` directly if the browser does not know the API or `prefers-reduced-motion: reduce` is set.
+3. Make `nameCards(cards)` give each card the `view-transition-name` `card-<data-product-id>`. Each name may appear only once on the page.
+4. Try the sorting in the shop at `npm start` and slow down the animation in DevTools (Animations panel).
 
-## Prüfen
+## Check
 
 ```bash
 npm run test:start -- exercises/12-view-transitions

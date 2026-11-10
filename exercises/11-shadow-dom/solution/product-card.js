@@ -16,11 +16,11 @@ template.innerHTML = `
 `
 
 /**
- * Produktkarte mit Shadow DOM:
+ * Product card with Shadow DOM:
  * <product-card product-id="p-zange">
  *   <span slot="name">Kombizange</span>
  *   <shop-price slot="price" cents="1890"></shop-price>
- *   <p>Beschreibung landet im Default-Slot</p>
+ *   <p>The description goes into the default slot</p>
  * </product-card>
  */
 export class ProductCard extends HTMLElement {

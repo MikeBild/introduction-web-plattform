@@ -1,6 +1,6 @@
 // @ts-check
-// Der Werkstatt-Shop aus den Musterlösungen: ES Modules, Custom Elements, fetch,
-// View Transitions, localStorage, Progressive Enhancement – ohne Framework, ohne Build.
+// The workshop shop built from the reference solutions: ES Modules, Custom Elements, fetch,
+// View Transitions, localStorage, Progressive Enhancement – no framework, no build.
 import { addItem } from 'shop/cart.js'
 import { products as fallbackProducts } from '../exercises/shop.js'
 import '../exercises/10-custom-elements/solution/elements.js'
@@ -19,7 +19,7 @@ const sort = /** @type {HTMLSelectElement} */ (document.querySelector('#sort'))
 const form = /** @type {HTMLFormElement} */ (document.querySelector('form.checkout'))
 const badge = /** @type {CartBadge} */ (document.querySelector('cart-badge'))
 
-// Kleiner Store für den Warenkorb, im localStorage gesichert
+// Small store for the cart, saved in localStorage
 const storage = createCartStorage(localStorage, 'werkstatt-shop:cart')
 /** @type {Set<(items: CartItem[]) => void>} */
 const listeners = new Set()
@@ -87,7 +87,7 @@ enhanceForm(form)
 try {
   products = await loadProducts({ timeoutMs: 3000 })
 } catch {
-  // Server nicht erreichbar: mit den Beispieldaten weiterarbeiten
+  // Server unreachable: continue with the sample data
   products = [...fallbackProducts]
 }
 render()

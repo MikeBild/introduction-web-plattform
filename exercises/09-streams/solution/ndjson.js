@@ -1,8 +1,8 @@
 // @ts-check
 
 /**
- * Liest eine NDJSON-Antwort (ein JSON-Objekt je Zeile) und liefert jedes Objekt,
- * sobald seine Zeile vollständig da ist – nicht erst am Ende.
+ * Reads an NDJSON response (one JSON object per line) and yields each object
+ * as soon as its line is complete – not only at the end.
  * @param {Response} response
  * @returns {AsyncGenerator<unknown, void, undefined>}
  */

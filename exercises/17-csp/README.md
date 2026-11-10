@@ -1,16 +1,18 @@
+*English · [Deutsch](README.de.md)*
+
 # 17 · Content Security Policy
 
-Die Policy in `start/csp.js` erlaubt `unsafe-inline` und `unsafe-eval`. Damit läuft jedes eingeschleuste Inline-Skript, und die Policy schützt kaum. Eine strikte Policy arbeitet mit einer Nonce: Nur Skripte, die diese Zufallszahl tragen, dürfen laufen.
+The policy in `start/csp.js` allows `unsafe-inline` and `unsafe-eval`. That way every injected inline script runs, and the policy barely protects anything. A strict policy works with a nonce: only scripts that carry this random value may run.
 
-## Aufgabe
+## Task
 
-1. Lass `createNonce()` 16 Zufallsbytes aus `crypto.getRandomValues` als Base64 liefern.
-2. Lass `buildCsp({ nonce })` `script-src 'nonce-…' 'strict-dynamic'` setzen, ohne `unsafe-inline` und `unsafe-eval`.
-3. Ergänz `object-src 'none'`, `base-uri 'none'`, `frame-ancestors 'none'` und `require-trusted-types-for 'script'`.
-4. Starte den Server mit `CSP=1 npm start`. Er schickt die Policy aus `solution/csp.js` als `Content-Security-Policy-Report-Only` und setzt die Nonce in jedes `<script>` der Shop-Seite. So meldet der Browser Verstöße, blockiert aber nichts – der übliche erste Schritt mit einer neuen Policy.
-5. Öffne die Konsole: Welche Verstöße meldet der Browser? Mit `CSP=enforce npm start` setzt der Server die Policy durch.
+1. Make `createNonce()` return 16 random bytes from `crypto.getRandomValues` as Base64.
+2. Make `buildCsp({ nonce })` set `script-src 'nonce-…' 'strict-dynamic'`, without `unsafe-inline` and `unsafe-eval`.
+3. Add `object-src 'none'`, `base-uri 'none'`, `frame-ancestors 'none'`, and `require-trusted-types-for 'script'`.
+4. Start the server with `CSP=1 npm start`. It sends the policy from `solution/csp.js` as `Content-Security-Policy-Report-Only` and puts the nonce on every `<script>` of the shop page. That way the browser reports violations but blocks nothing – the usual first step with a new policy.
+5. Open the console: which violations does the browser report? With `CSP=enforce npm start`, the server enforces the policy.
 
-## Prüfen
+## Check
 
 ```bash
 npm run test:start -- exercises/17-csp

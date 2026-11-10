@@ -1,16 +1,18 @@
-# 05 · Container Queries und :has()
+*English · [Deutsch](README.de.md)*
 
-Die Produktkarte in `start/card.css` wechselt bei 40rem Viewport-Breite ins Querformat, egal ob sie in der breiten Liste oder in der schmalen Seitenleiste steht. Für „ausverkauft“ und „Formular hat Fehler“ setzt JavaScript Klassen.
+# 05 · Container Queries and :has()
 
-## Aufgabe
+The product card in `start/card.css` switches to landscape at a viewport width of 40rem, no matter whether it sits in the wide list or in the narrow sidebar. For “sold out” and “form has errors”, JavaScript sets classes.
 
-1. Mach jeden Listenplatz `.cards > li` zum Container mit `container-type: inline-size`.
-2. Ersetze die Media Query durch `@container (inline-size >= 28rem)`.
-3. Dimme Karten mit `.card:has(.sold-out)` statt mit der Klasse `.is-sold-out`.
-4. Zeig `.error-summary` mit `form:has(:user-invalid)`, also erst nachdem jemand ein Feld falsch ausgefüllt hat.
-5. Lösch das JavaScript, das bisher die Klassen gesetzt hat, gedanklich mit: Es wird nicht mehr gebraucht.
+## Task
 
-## Prüfen
+1. Make each list slot `.cards > li` a container with `container-type: inline-size`.
+2. Replace the media query with `@container (inline-size >= 28rem)`.
+3. Dim cards with `.card:has(.sold-out)` instead of the class `.is-sold-out`.
+4. Show `.error-summary` with `form:has(:user-invalid)`, that is, only after someone has filled in a field incorrectly.
+5. In your head, delete the JavaScript that used to set the classes as well: it is no longer needed.
+
+## Check
 
 ```bash
 npm run test:start -- exercises/05-container-has

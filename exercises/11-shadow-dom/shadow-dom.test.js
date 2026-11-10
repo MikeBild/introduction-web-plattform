@@ -8,7 +8,7 @@ const buyButton = () => /** @type {HTMLButtonElement | null | undefined} */ (car
 /** @type {HTMLStyleElement} */
 let pageStyle
 
-describe('Produktkarte mit Shadow DOM, Template und Slots', () => {
+describe('Product card with Shadow DOM, template, and slots', () => {
   beforeEach(() => {
     pageStyle = document.createElement('style')
     pageStyle.textContent = `
@@ -25,12 +25,12 @@ describe('Produktkarte mit Shadow DOM, Template und Slots', () => {
 
   afterEach(() => pageStyle.remove())
 
-  it('hängt eine offene Shadow Root an und lässt den Light DOM stehen', () => {
+  it('attaches an open shadow root and leaves the Light DOM in place', () => {
     expect(card().shadowRoot?.mode).toBe('open')
     expect(card().querySelector('[slot="name"]')?.textContent).toBe('Kombizange')
   })
 
-  it('verteilt Inhalte auf benannte Slots und den Default-Slot', () => {
+  it('distributes content to named slots and the default slot', () => {
     /** @param {string} selector */
     const assigned = (selector) =>
       /** @type {HTMLSlotElement | null | undefined} */ (card().shadowRoot?.querySelector(selector))
@@ -41,7 +41,7 @@ describe('Produktkarte mit Shadow DOM, Template und Slots', () => {
     expect(assigned('slot:not([name])')).toEqual(['Mit Schneide für harte Drähte'])
   })
 
-  it('schützt den Button vor globalem CSS und öffnet ihn gezielt über ::part', () => {
+  it('protects the button from global CSS and opens it on purpose through ::part', () => {
     const button = buyButton()
     expect(button).toBeTruthy()
     const style = getComputedStyle(/** @type {HTMLButtonElement} */ (button))
@@ -49,7 +49,7 @@ describe('Produktkarte mit Shadow DOM, Template und Slots', () => {
     expect(style.backgroundColor).toBe('rgb(29, 78, 216)')
   })
 
-  it('meldet cart:add über die Grenze des Shadow DOM hinweg', () => {
+  it('dispatches cart:add across the Shadow DOM boundary', () => {
     const listener = vi.fn()
     document.addEventListener('cart:add', listener)
     buyButton()?.click()

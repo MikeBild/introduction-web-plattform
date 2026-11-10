@@ -1,8 +1,8 @@
 // @ts-check
 
 /**
- * Öffnet den Warenkorb als modalen Dialog. showModal setzt den Focus in den Dialog,
- * macht den Rest der Seite inert und schließt mit Escape.
+ * Opens the cart as a modal dialog. showModal moves focus into the dialog,
+ * makes the rest of the page inert, and closes on Escape.
  * @param {HTMLDialogElement} dialog
  * @param {HTMLElement} trigger
  */
@@ -12,7 +12,7 @@ export const openCart = (dialog, trigger) => {
 }
 
 /**
- * Sagt eine Statusmeldung an, ohne den Focus zu verschieben.
+ * Announces a status message without moving focus.
  * @param {HTMLElement} region
  * @param {string} text
  */

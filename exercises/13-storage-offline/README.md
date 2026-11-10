@@ -1,19 +1,21 @@
-# 13 · Storage und Offline mit Service Worker
+*English · [Deutsch](README.de.md)*
 
-Der Warenkorb soll einen Reload überstehen, und der Shop soll offline wenigstens die zuletzt geladenen Produkte zeigen. Dafür brauchst du zwei Dinge: einen robusten Speicher für kleine Daten und eine bewusste Cache-Strategie im Service Worker.
+# 13 · Storage and offline with a Service Worker
 
-## Aufgabe
+The cart should survive a reload, and offline the shop should at least show the most recently loaded products. For that, you need two things: robust storage for small data and a deliberate cache strategy in the Service Worker.
 
-1. Lass `createCartStorage(storage, key)` den Warenkorb als `{ version: 1, items }` speichern. `load()` liefert `[]` bei fehlenden Daten, kaputtem JSON oder einer anderen Version. `save()` liefert `false`, statt zu werfen, wenn der Speicher voll ist.
-2. Schreib `cacheFirst(request, cache, fetchFn)`: Treffer aus dem Cache liefern, sonst laden und nur erfolgreiche Antworten cachen.
-3. Schreib `networkFirst(request, cache, fetchFn)`: laden und cachen; wenn das Netz fehlt, den letzten Stand aus dem Cache liefern.
-4. Vervollständige `start/sw.js`: App Shell bei `install` cachen, alte Caches bei `activate` löschen, `/api/` mit `networkFirst`, alles andere mit `cacheFirst` beantworten.
-5. Probier es unter `npm start` aus: DevTools → Application → Service Workers, dann im Network-Tab „Offline“ wählen und neu laden.
+## Task
 
-## Prüfen
+1. Make `createCartStorage(storage, key)` save the cart as `{ version: 1, items }`. `load()` returns `[]` for missing data, broken JSON, or a different version. `save()` returns `false` instead of throwing when the storage is full.
+2. Write `cacheFirst(request, cache, fetchFn)`: return hits from the cache, otherwise load and cache only successful responses.
+3. Write `networkFirst(request, cache, fetchFn)`: load and cache; if the network is unavailable, return the last state from the cache.
+4. Complete `start/sw.js`: cache the App Shell on `install`, delete old caches on `activate`, answer `/api/` with `networkFirst` and everything else with `cacheFirst`.
+5. Try it at `npm start`: DevTools → Application → Service Workers, then select “Offline” in the Network tab and reload.
+
+## Check
 
 ```bash
 npm run test:start -- exercises/13-storage-offline
 ```
 
-Die Tests prüfen Speicher und Strategien mit der echten Cache API im Browser. Den Service Worker selbst prüfst du im Browser.
+The tests check the storage and the strategies with the real Cache API in the browser. You check the Service Worker itself in the browser.

@@ -7,8 +7,8 @@
  */
 
 /**
- * Zeigt eine Bewertung an.
- * TODO: Text über textContent statt innerHTML einsetzen.
+ * Shows a review.
+ * TODO: insert text through textContent instead of innerHTML.
  * @param {HTMLElement} element
  * @param {Review} review
  */
@@ -22,9 +22,9 @@ export const renderReview = (element, review) => {
  */
 
 /**
- * TODO: Policy „shop“ über factory.createPolicy anlegen, createHTML escaped &, <, >, " und '.
- * Ohne factory ein Objekt mit derselben createHTML-Funktion liefern.
- * @param {TrustedTypePolicyFactory | undefined} factory window.trustedTypes, wenn vorhanden
+ * TODO: create the policy “shop” through factory.createPolicy; createHTML escapes &, <, >, " and '.
+ * Without factory, return an object with the same createHTML function.
+ * @param {TrustedTypePolicyFactory | undefined} factory window.trustedTypes, if available
  * @returns {HtmlPolicy}
  */
 export const createShopPolicy = (factory) => {

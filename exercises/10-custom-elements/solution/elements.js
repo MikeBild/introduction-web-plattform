@@ -1,7 +1,7 @@
 // @ts-check
 import { formatCents } from '../../shop.js'
 
-/** Zeigt einen Preis in Cent als Euro-Betrag: <shop-price cents="1290"></shop-price> */
+/** Shows a price in cents as a euro amount: <shop-price cents="1290"></shop-price> */
 export class ShopPrice extends HTMLElement {
   static observedAttributes = ['cents']
 
@@ -20,8 +20,8 @@ export class ShopPrice extends HTMLElement {
 }
 
 /**
- * Button, der ein Produkt in den Warenkorb legt: <add-to-cart product-id="p-hammer"></add-to-cart>
- * Meldet das per CustomEvent „cart:add“, das bis zum document hochsteigt.
+ * Button that adds a product to the cart: <add-to-cart product-id="p-hammer"></add-to-cart>
+ * Reports this with the CustomEvent “cart:add”, which bubbles up to the document.
  */
 export class AddToCart extends HTMLElement {
   connectedCallback() {

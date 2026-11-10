@@ -5,7 +5,7 @@ import { announce, openCart } from './solution/cart-dialog.js'
 /** @param {string} selector */
 const $ = (selector) => /** @type {HTMLElement} */ (document.querySelector(selector))
 
-describe('Warenkorb-Dialog und Statusmeldung', () => {
+describe('Cart dialog and status message', () => {
   beforeEach(() => {
     document.body.innerHTML = `
       <button type="button" id="open">Warenkorb (2)</button>
@@ -16,7 +16,7 @@ describe('Warenkorb-Dialog und Statusmeldung', () => {
       <p id="status"></p>`
   })
 
-  it('öffnet modal und setzt den Focus in den Dialog', () => {
+  it('opens modally and moves focus into the dialog', () => {
     const dialog = /** @type {HTMLDialogElement} */ ($('#cart'))
     openCart(dialog, $('#open'))
     expect(dialog.open).toBe(true)
@@ -24,7 +24,7 @@ describe('Warenkorb-Dialog und Statusmeldung', () => {
     expect(dialog.contains(document.activeElement)).toBe(true)
   })
 
-  it('gibt den Focus nach dem Schließen an den Auslöser zurück', async () => {
+  it('returns focus to the trigger after closing', async () => {
     const dialog = /** @type {HTMLDialogElement} */ ($('#cart'))
     openCart(dialog, $('#open'))
     const closed = new Promise((resolve) => dialog.addEventListener('close', resolve, { once: true }))
@@ -33,7 +33,7 @@ describe('Warenkorb-Dialog und Statusmeldung', () => {
     expect(document.activeElement).toBe($('#open'))
   })
 
-  it('sagt Meldungen über eine Live Region an', () => {
+  it('announces messages through a Live Region', () => {
     const alertSpy = vi.spyOn(window, 'alert').mockImplementation(() => {})
     announce($('#status'), 'Kombizange liegt im Warenkorb')
     expect($('#status').getAttribute('aria-live')).toBe('polite')

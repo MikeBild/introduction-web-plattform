@@ -1,5 +1,5 @@
 // @ts-check
-// Gemeinsame Daten des Werkstatt-Shops. Geld steht immer in ganzen Cent.
+// Shared data of the workshop shop. Money is always in whole cents.
 
 /**
  * @typedef {object} Product
@@ -20,7 +20,7 @@ export const products = Object.freeze([
 const euro = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' })
 
 /**
- * Formatiert Cent als Euro-Betrag, z. B. 1290 → „12,90 €“.
+ * Formats cents as a euro amount, e.g. 1290 → “12,90 €”.
  * @param {number} cents
  * @returns {string}
  */

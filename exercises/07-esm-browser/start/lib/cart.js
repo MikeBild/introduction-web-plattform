@@ -8,8 +8,8 @@
  * @property {number} priceCents
  */
 
-// Früher: window.Shop.cart = [] und Funktionen, die dieses globale Array verändern.
-// TODO: Mach daraus Pure Functions, die einen neuen Warenkorb liefern.
+// Before: window.Shop.cart = [] and functions that mutate this global array.
+// TODO: Turn these into Pure Functions that return a new cart.
 
 /**
  * @param {readonly CartItem[]} items

@@ -1,9 +1,9 @@
 // @ts-check
 
 /**
- * Führt eine DOM-Änderung als View Transition aus. Ohne API oder bei
- * „prefers-reduced-motion: reduce“ läuft die Änderung sofort und ohne Animation.
- * Das Promise erfüllt sich, sobald das DOM aktualisiert ist.
+ * Runs a DOM change as a View Transition. Without the API or with
+ * “prefers-reduced-motion: reduce”, the change runs immediately and without animation.
+ * The promise resolves as soon as the DOM is updated.
  * @param {() => void | Promise<void>} update
  * @returns {Promise<void>}
  */
@@ -17,9 +17,9 @@ export const transition = async (update) => {
 }
 
 /**
- * Gibt jeder Karte einen eindeutigen view-transition-name, damit der Browser
- * sie zwischen altem und neuem Zustand einander zuordnet.
- * @param {Iterable<HTMLElement>} cards Elemente mit data-product-id
+ * Gives each card a unique view-transition-name so that the browser
+ * can match them between the old and the new state.
+ * @param {Iterable<HTMLElement>} cards elements with data-product-id
  */
 export const nameCards = (cards) => {
   for (const card of cards) card.style.viewTransitionName = `card-${card.dataset.productId}`

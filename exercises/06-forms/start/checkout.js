@@ -9,8 +9,8 @@
  */
 
 /**
- * Meldet dem Browser, wenn die Menge den Bestand übersteigt.
- * TODO: setCustomValidity mit Meldung, leerer String, wenn alles passt.
+ * Tells the browser when the quantity exceeds the stock.
+ * TODO: setCustomValidity with a message, an empty string when everything is fine.
  * @param {HTMLInputElement} input
  * @param {number} stock
  */
@@ -20,8 +20,8 @@ export const checkQuantity = (input, stock) => {
 }
 
 /**
- * Liest das Checkout-Formular aus.
- * TODO: FormData statt einzelner querySelector-Aufrufe, quantity als Zahl.
+ * Reads the checkout form.
+ * TODO: FormData instead of separate querySelector calls, quantity as a number.
  * @param {HTMLFormElement} form
  * @returns {Checkout}
  */

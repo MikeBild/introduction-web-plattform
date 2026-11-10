@@ -22,18 +22,18 @@ const collect = async (items) => {
   return result
 }
 
-describe('NDJSON aus einem Stream lesen', () => {
-  it('liefert ein Objekt je Zeile, auch wenn Zeilen über Chunks verteilt sind', async () => {
+describe('Reading NDJSON from a stream', () => {
+  it('yields one object per line, even when lines are split across chunks', async () => {
     const response = responseFrom(['{"id":"p-ham', 'mer"}\n{"id":', '"p-zange"}\n'])
     expect(await collect(readNdjson(response))).toEqual([{ id: 'p-hammer' }, { id: 'p-zange' }])
   })
 
-  it('liest die letzte Zeile auch ohne Zeilenumbruch und überspringt Leerzeilen', async () => {
+  it('reads the last line even without a line break and skips empty lines', async () => {
     const response = responseFrom(['{"id":"p-bits"}\n\n', '{"id":"p-akku"}'])
     expect(await collect(readNdjson(response))).toEqual([{ id: 'p-bits' }, { id: 'p-akku' }])
   })
 
-  it('liefert das erste Objekt, bevor der Stream fertig ist', async () => {
+  it('yields the first object before the stream is done', async () => {
     /** @type {TransformStream<Uint8Array, Uint8Array>} */
     const pipe = new TransformStream()
     const writer = pipe.writable.getWriter()

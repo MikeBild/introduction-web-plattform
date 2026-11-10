@@ -1,9 +1,9 @@
 // @ts-check
 
 /**
- * Liest eine NDJSON-Antwort (ein JSON-Objekt je Zeile).
- * TODO: Stream mit TextDecoderStream und getReader lesen, Zeilen puffern,
- * jedes Objekt liefern, sobald seine Zeile vollständig ist. Leere Zeilen überspringen.
+ * Reads an NDJSON response (one JSON object per line).
+ * TODO: read the stream with TextDecoderStream and getReader, buffer lines,
+ * yield each object as soon as its line is complete. Skip empty lines.
  * @param {Response} response
  * @returns {AsyncGenerator<unknown, void, undefined>}
  */

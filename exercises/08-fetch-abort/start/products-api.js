@@ -1,7 +1,7 @@
 // @ts-check
 /** @import { Product } from '../../shop.js' */
 
-/** Fehler für Antworten mit Status außerhalb von 200 bis 299. */
+/** Error for responses with a status outside 200 to 299. */
 export class HttpError extends Error {
   /**
    * @param {number} status
@@ -15,8 +15,8 @@ export class HttpError extends Error {
 }
 
 /**
- * Lädt die Produkte.
- * TODO: signal des Aufrufers und Timeout mit AbortSignal.any kombinieren, bei !response.ok HttpError werfen.
+ * Loads the products.
+ * TODO: combine the signal of the caller and a timeout with AbortSignal.any, throw HttpError on !response.ok.
  * @param {{ signal?: AbortSignal, timeoutMs?: number, fetchFn?: typeof fetch }} [options]
  * @returns {Promise<Product[]>}
  */
@@ -26,8 +26,8 @@ export const loadProducts = async ({ fetchFn = fetch } = {}) => {
 }
 
 /**
- * Liefert eine Suchfunktion.
- * TODO: jede vorige, noch laufende Suche per AbortController abbrechen.
+ * Returns a search function.
+ * TODO: abort every previous search that is still running with an AbortController.
  * @param {typeof fetch} [fetchFn]
  * @returns {(term: string) => Promise<Product[]>}
  */

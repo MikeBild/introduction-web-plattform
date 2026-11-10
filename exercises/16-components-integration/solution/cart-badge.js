@@ -9,10 +9,10 @@
  */
 
 /**
- * Warenkorb-Anzeige, die in jedem Framework funktioniert:
- * - Daten rein über die Property items (ein Array, kein Attribut)
- * - Text über das Attribut label
- * - Änderungen raus über das Event cart-change mit detail.items
+ * Cart display that works in any framework:
+ * - data in through the property items (an array, not an attribute)
+ * - text through the attribute label
+ * - changes out through the event cart-change with detail.items
  */
 export class CartBadge extends HTMLElement {
   static observedAttributes = ['label']
@@ -53,7 +53,7 @@ export class CartBadge extends HTMLElement {
   }
 
   /**
-   * Merkt sich eine Cleanup-Function für den Moment, in dem das Element das DOM verlässt.
+   * Remembers a Cleanup Function for the moment the element leaves the DOM.
    * @param {() => void} cleanup
    */
   addCleanup(cleanup) {
@@ -70,11 +70,11 @@ export class CartBadge extends HTMLElement {
 if (!customElements.get('cart-badge')) customElements.define('cart-badge', CartBadge)
 
 /**
- * Verbindet ein <cart-badge> mit einem Store, egal ob der aus React, Knockout oder Vanilla JS kommt.
- * Die Verbindung löst sich, sobald das Element das DOM verlässt.
+ * Connects a <cart-badge> to a store, no matter whether it comes from React, Knockout, or vanilla JS.
+ * The connection is released as soon as the element leaves the DOM.
  * @param {CartBadge} element
  * @param {CartStore} store
- * @returns {() => void} löst die Verbindung sofort
+ * @returns {() => void} releases the connection immediately
  */
 export const connectStore = (element, store) => {
   element.items = store.getState()

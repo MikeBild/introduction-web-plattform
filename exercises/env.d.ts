@@ -1,10 +1,10 @@
-// Vite liefert Dateien mit ?raw als Text. Nur die Tests nutzen das, der Browser-Code nicht.
+// Vite delivers files with ?raw as text. Only the tests use this, not the browser code.
 declare module '*?raw' {
   const content: string
   export default content
 }
 
-// Trusted Types fehlen noch in den DOM-Typen von TypeScript. Minimal das, was Übung 18 nutzt.
+// Trusted Types are still missing from the TypeScript DOM types. Just the minimum that exercise 18 uses.
 interface TrustedHTML {
   readonly __brand: 'TrustedHTML'
   toString(): string

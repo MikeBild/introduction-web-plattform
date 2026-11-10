@@ -4,9 +4,9 @@
 const VERSION = 1
 
 /**
- * Speichert den Warenkorb versioniert als JSON. Kaputte oder alte Daten ergeben
- * einen leeren Warenkorb statt eines Fehlers.
- * @param {Storage} storage z. B. localStorage
+ * Saves the cart as versioned JSON. Broken or old data results in
+ * an empty cart instead of an error.
+ * @param {Storage} storage e.g. localStorage
  * @param {string} key
  */
 export const createCartStorage = (storage, key) => ({
@@ -21,7 +21,7 @@ export const createCartStorage = (storage, key) => ({
   },
   /**
    * @param {readonly CartItem[]} items
-   * @returns {boolean} false, wenn der Speicher voll oder gesperrt ist
+   * @returns {boolean} false if the storage is full or blocked
    */
   save(items) {
     try {
@@ -34,7 +34,7 @@ export const createCartStorage = (storage, key) => ({
 })
 
 /**
- * Cache first: für statische Dateien, die sich nur mit neuer Version ändern.
+ * Cache first: for static files that only change with a new version.
  * @param {Request} request
  * @param {Cache} cache
  * @param {typeof fetch} [fetchFn]
@@ -49,8 +49,8 @@ export const cacheFirst = async (request, cache, fetchFn = fetch) => {
 }
 
 /**
- * Network first: für Daten wie /api/products, die aktuell sein sollen,
- * offline aber aus dem Cache kommen dürfen.
+ * Network first: for data like /api/products that should be up to date
+ * but may come from the cache when offline.
  * @param {Request} request
  * @param {Cache} cache
  * @param {typeof fetch} [fetchFn]

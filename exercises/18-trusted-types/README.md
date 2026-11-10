@@ -1,15 +1,17 @@
+*English · [Deutsch](README.de.md)*
+
 # 18 · Trusted Types
 
-`start/reviews.js` setzt Kundenbewertungen per `innerHTML` ein. Eine Bewertung mit `<img onerror=…>` führt so Code im Shop aus: DOM-basiertes Cross-Site Scripting (DOM-XSS). Trusted Types machen solche Stellen sichtbar. Mit `require-trusted-types-for 'script'` in der CSP akzeptieren `innerHTML` und ähnliche Sinks nur noch Werte aus einer Policy. Trusted Types sind seit Februar 2026 Baseline.
+`start/reviews.js` inserts customer reviews through `innerHTML`. A review with `<img onerror=…>` thus runs code in the shop: DOM-based cross-site scripting (DOM XSS). Trusted Types make such places visible. With `require-trusted-types-for 'script'` in the CSP, `innerHTML` and similar sinks only accept values from a policy. Trusted Types have been Baseline since February 2026.
 
-## Aufgabe
+## Task
 
-1. Bau `renderReview(element, review)` ohne `innerHTML`: Elemente erzeugen, Text per `textContent`, dann `replaceChildren`.
-2. Leg mit `createShopPolicy(factory)` die Policy `shop` über `factory.createPolicy` an. Ihr `createHTML` maskiert `&`, `<`, `>`, `"` und `'`.
-3. Gib ohne `factory` ein Objekt mit derselben `createHTML`-Funktion zurück.
-4. Starte den Shop mit `CSP=1 npm start` (Report-Only) und such in der Konsole nach Trusted-Types-Verstößen. Welche Stellen setzen noch Strings in `innerHTML`?
+1. Build `renderReview(element, review)` without `innerHTML`: create elements, set text through `textContent`, then `replaceChildren`.
+2. With `createShopPolicy(factory)`, create the policy `shop` through `factory.createPolicy`. Its `createHTML` escapes `&`, `<`, `>`, `"`, and `'`.
+3. Without `factory`, return an object with the same `createHTML` function.
+4. Start the shop with `CSP=1 npm start` (Report-Only) and look for Trusted Types violations in the console. Which places still put strings into `innerHTML`?
 
-## Prüfen
+## Check
 
 ```bash
 npm run test:start -- exercises/18-trusted-types

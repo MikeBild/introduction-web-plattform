@@ -1,5 +1,5 @@
 // @ts-check
-// TODO: per import aus 'shop/cart.js' laden statt über ein globales Objekt.
+// TODO: load with an import of 'shop/cart.js' instead of through a global object.
 import { addItem, totalCents } from './lib/cart.js'
 import { formatCents, products } from '../../shop.js'
 

@@ -8,7 +8,7 @@ const style = (selector) => getComputedStyle(/** @type {Element} */ (document.qu
 /** @type {HTMLStyleElement} */
 let sheet
 
-describe('Custom Properties, Cascade Layers und Nesting', () => {
+describe('Custom Properties, Cascade Layers, and Nesting', () => {
   beforeEach(() => {
     sheet = document.createElement('style')
     sheet.textContent = css
@@ -24,26 +24,26 @@ describe('Custom Properties, Cascade Layers und Nesting', () => {
 
   afterEach(() => sheet.remove())
 
-  it('definiert die Akzentfarbe als Custom Property', () => {
+  it('defines the accent color as a Custom Property', () => {
     const accent = getComputedStyle(document.documentElement).getPropertyValue('--color-accent').trim()
     expect(accent).toBe('#1d4ed8')
   })
 
-  it('legt die Reihenfolge der Layers am Anfang fest', () => {
+  it('declares the layer order at the start', () => {
     expect(css.trimStart()).toMatch(/^(\/\*[\s\S]*?\*\/\s*)?@layer reset, base, components, utilities;/)
     expect(css).not.toContain('!important')
   })
 
-  it('lässt die Component gegen den Reset gewinnen, obwohl der Reset eine ID nutzt', () => {
+  it('lets the component win against the reset even though the reset uses an ID', () => {
     expect(style('#buy').backgroundColor).toBe('rgb(29, 78, 216)')
     expect(style('#buy').display).toBe('inline-flex')
   })
 
-  it('lässt Utilities gegen Components gewinnen', () => {
+  it('lets utilities win against components', () => {
     expect(style('#secret').display).toBe('none')
   })
 
-  it('schachtelt den Hover-Zustand in die Regel für .button', () => {
+  it('nests the hover state into the rule for .button', () => {
     const rules = [...sheet.sheet?.cssRules ?? []]
       .flatMap((rule) => (rule instanceof CSSLayerBlockRule ? [...rule.cssRules] : []))
       .filter((rule) => rule instanceof CSSStyleRule && rule.selectorText === '.button')

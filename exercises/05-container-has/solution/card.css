@@ -1,4 +1,4 @@
-/* Jeder Listenplatz ist ein Container; die Karte fragt ihn, nicht den Viewport */
+/* Each list slot is a container; the card asks it, not the viewport */
 .cards > li {
   container-type: inline-size;
 }
@@ -15,7 +15,7 @@
   }
 }
 
-/* Ausverkauft: die Karte erkennt es an ihrem Inhalt, ohne JavaScript */
+/* Sold out: the card detects it from its content, without JavaScript */
 .card:has(.sold-out) {
   opacity: 0.6;
 }
@@ -24,7 +24,7 @@
   display: none;
 }
 
-/* Erst nach einer Eingabe der Nutzerin zeigen, nicht schon beim Laden */
+/* Show only after the user has entered something, not on load */
 form:has(:user-invalid) .error-summary {
   display: block;
 }

@@ -3,11 +3,11 @@
 /** @typedef {'LCP' | 'INP' | 'CLS'} VitalName */
 /** @typedef {'good' | 'needs-improvement' | 'poor'} Rating */
 
-/** Grenzwerte der Core Web Vitals: bis „good“, bis „needs-improvement“, darüber „poor“ */
+/** Core Web Vitals thresholds: up to “good”, up to “needs-improvement”, above that “poor” */
 const thresholds = /** @type {const} */ ({
-  LCP: [2500, 4000], // Millisekunden
-  INP: [200, 500], // Millisekunden
-  CLS: [0.1, 0.25], // ohne Einheit
+  LCP: [2500, 4000], // milliseconds
+  INP: [200, 500], // milliseconds
+  CLS: [0.1, 0.25], // unitless
 })
 
 /**
@@ -23,10 +23,10 @@ export const rate = (name, value) => {
 }
 
 /**
- * Meldet jeden neuen LCP-Kandidaten. buffered: true liefert auch Einträge,
- * die vor dem Aufruf entstanden sind.
+ * Reports every new LCP candidate. buffered: true also delivers entries
+ * that were created before the call.
  * @param {(metric: { name: 'LCP', value: number, rating: Rating }) => void} report
- * @returns {() => void} beendet die Beobachtung
+ * @returns {() => void} ends the observation
  */
 export const observeLcp = (report) => {
   const observer = new PerformanceObserver((list) => {
