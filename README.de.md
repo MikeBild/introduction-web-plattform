@@ -104,7 +104,7 @@ Alle Features im Kern sind Baseline, laufen also in den aktuellen Versionen von 
 
 - Workshop: [„Moderne Web-Plattform ohne Framework“](https://workshops.mikebild.dev/w/web-plattform/remote/)
 - Folien: [slides.mikebild.dev/introduction-web-plattform](https://slides.mikebild.dev/introduction-web-plattform.html)
-- PDF: [slides.mikebild.dev/introduction-web-plattform.pdf](https://slides.mikebild.dev/introduction-web-plattform.pdf)
+- PDF: [introduction-web-plattform.pdf](https://objects.upraft.mikebild.info/site-media/mikebild/decks/introduction-web-plattform/introduction-web-plattform.pdf)
 
 ## Archiv
 
