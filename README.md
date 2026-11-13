@@ -104,8 +104,8 @@ All features in the core are Baseline, so they run in the current versions of Ch
 
 - Workshop (held in German): [“Modern web platform without a framework”](https://workshops.mikebild.dev/w/web-plattform/remote/)
 - Slides: [slides.mikebild.dev/introduction-web-plattform.en](https://slides.mikebild.dev/introduction-web-plattform.en.html)
-- PDF: [introduction-web-plattform.en.pdf](https://objects.upraft.mikebild.info/site-media/mikebild/decks/introduction-web-plattform/introduction-web-plattform.en.pdf)
-- Video: [introduction-web-plattform.en.mp4](https://objects.upraft.mikebild.info/site-media/mikebild/decks/introduction-web-plattform/introduction-web-plattform.en.mp4)
+- PDF: [introduction-web-plattform.en.pdf](https://media.mikebild.dev/site/mikebild/decks/introduction-web-plattform/introduction-web-plattform.en.pdf)
+- Video: [introduction-web-plattform.en.mp4](https://media.mikebild.dev/site/mikebild/decks/introduction-web-plattform/introduction-web-plattform.en.mp4)
 
 ## Archive
 
